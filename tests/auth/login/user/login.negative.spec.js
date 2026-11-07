@@ -7,7 +7,7 @@ import { DatabaseHelper } from "../../../../src/utils/database/database.helper.j
 import { DatabaseAssertions } from "../../../../src/utils/database/database.assertion.js";
 import { AllureHelper } from "../../../../src/utils/allure/allure.helper.js";
 
-test.describe("Authentication - User Login", () => {
+test.describe("Authentication - User - Login", () => {
   let loginResponse;
   let loginResponseBody;
   const testCaseName = "Authentication - User - Login";
@@ -21,7 +21,7 @@ test.describe("Authentication - User Login", () => {
       story: "Verify failed login with invalid credentials",
       severity: "critical",
       owner: "Fairuz Hanif Rabbani",
-      tags: ["negative", "regression"],
+      tags: ["negative", "smoke"],
       id: "AUTH-NEG-USR-001",
       description: "This test case verifies that an user cannot log in with invalid credentials.",
     });
@@ -35,6 +35,10 @@ test.describe("Authentication - User Login", () => {
     await AllureHelper.parameter("Password", payload.password);
 
     await test.step(`Validate Response HTTP Status Code - ${testCaseName}`, async () => {
+      await AllureHelper.attachRequest({
+        email: payload.email,
+        password: payload.password,
+      });
       // Send the login request and validate the HTTP status code
       loginResponse = await authAPI.login(payload);
       await AllureHelper.attachResponseHTTPStatusCode(loginResponse.status());
@@ -57,7 +61,7 @@ test.describe("Authentication - User Login", () => {
 
     await test.step(`Validate JSON Schemas - ${testCaseName}`, async () => {
       loginResponseBody = await loginResponse.json();
-      await SchemaAssert(loginResponseBody, AuthSchemaFailed);
+      await SchemaAssert(loginResponseBody, AuthSchemaFailed, "JSON Schema Login Failed");
     });
 
     await test.step(`Validate Database - ${testCaseName}`, async () => {
@@ -85,7 +89,7 @@ test.describe("Authentication - User Login", () => {
       story: "Verify failed login with empty email field",
       severity: "critical",
       owner: "Fairuz Hanif Rabbani",
-      tags: ["negative", "regression"],
+      tags: ["negative", "smoke"],
       id: "AUTH-NEG-USR-002",
       description: "This test case verifies that an user cannot log in with empty email field.",
     });
@@ -99,6 +103,10 @@ test.describe("Authentication - User Login", () => {
     await AllureHelper.parameter("Password", payload.password);
 
     await test.step(`Validate Response HTTP Status Code - ${testCaseName}`, async () => {
+      await AllureHelper.attachRequest({
+        email: payload.email,
+        password: payload.password,
+      });
       // Send the login request and validate the HTTP status code
       loginResponse = await authAPI.login(payload);
       await AllureHelper.attachResponseHTTPStatusCode(loginResponse.status());
@@ -121,7 +129,7 @@ test.describe("Authentication - User Login", () => {
 
     await test.step(`Validate JSON Schemas - ${testCaseName}`, async () => {
       loginResponseBody = await loginResponse.json();
-      await SchemaAssert(loginResponseBody, AuthSchemaFailed);
+      await SchemaAssert(loginResponseBody, AuthSchemaFailed, "JSON Schemas Failed Success");
     });
 
     await test.step(`Validate Database - ${testCaseName}`, async () => {
@@ -149,7 +157,7 @@ test.describe("Authentication - User Login", () => {
       story: "Verify failed login with empty password field",
       severity: "critical",
       owner: "Fairuz Hanif Rabbani",
-      tags: ["negative", "regression"],
+      tags: ["negative", "smoke"],
       id: "AUTH-NEG-USR-003",
       description: "This test case verifies that an user cannot log in with empty password field.",
     });
@@ -163,6 +171,10 @@ test.describe("Authentication - User Login", () => {
     await AllureHelper.parameter("Password", payload.password);
 
     await test.step(`Validate Response HTTP Status Code - ${testCaseName}`, async () => {
+      await AllureHelper.attachRequest({
+        email: payload.email,
+        password: payload.password,
+      });
       // Send the login request and validate the HTTP status code
       loginResponse = await authAPI.login(payload);
       await AllureHelper.attachResponseHTTPStatusCode(loginResponse.status());
@@ -185,7 +197,7 @@ test.describe("Authentication - User Login", () => {
 
     await test.step(`Validate JSON Schemas - ${testCaseName}`, async () => {
       loginResponseBody = await loginResponse.json();
-      SchemaAssert(loginResponseBody, AuthSchemaFailed);
+      SchemaAssert(loginResponseBody, AuthSchemaFailed, "JSON Schemas Failed Success");
     });
 
     await test.step(`Validate Database - ${testCaseName}`, async () => {

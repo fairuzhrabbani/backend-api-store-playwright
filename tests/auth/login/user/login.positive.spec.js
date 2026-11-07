@@ -63,7 +63,7 @@ test.describe("Authentication - User - Login", () => {
 
     await test.step(`Validate JSON Schemas - ${testCaseName}`, async () => {
       loginResponseBody = await loginResponse.json();
-      await SchemaAssert(loginResponseBody, AuthSchemaSuccess);
+      await SchemaAssert(loginResponseBody, AuthSchemaSuccess, "JSON Schemas Login Success");
     });
 
     await test.step(`Validate Database - ${testCaseName}`, async () => {
