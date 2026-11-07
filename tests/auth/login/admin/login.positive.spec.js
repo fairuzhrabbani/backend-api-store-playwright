@@ -69,7 +69,7 @@ test.describe("Authentication - Admin - Login", () => {
     // Attach Allure steps for the test case
     await test.step(`Validate JSON Schemas - ${testCaseName}`, async () => {
       loginResponseBody = await loginResponse.json();
-      await SchemaAssert(loginResponseBody, AuthSchemaSuccess, "Login Success Response");
+      await SchemaAssert(loginResponseBody, AuthSchemaSuccess, "JSON Schemas Login Success");
     });
 
     // Attach Allure steps for the test case
