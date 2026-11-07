@@ -24,7 +24,7 @@ test.describe("Authentication - User - Registration", () => {
       story: "Verify failed registration with empty name field",
       severity: "critical",
       owner: "Fairuz Hanif Rabbani",
-      tags: ["negative", "regression"],
+      tags: ["negative", "smoke"],
       id: "REG-NEG-USR-001",
       description: "This test case verifies that an user cannot register with empty name field.",
     });
@@ -70,7 +70,7 @@ test.describe("Authentication - User - Registration", () => {
       await SchemaAssert(
         registerResponseBody,
         RegisterSchemaFailed,
-        "Registration Failed Response",
+        "JSON Schema Registration Failed",
       );
     });
 
@@ -100,7 +100,7 @@ test.describe("Authentication - User - Registration", () => {
       story: "Verify failed registration with empty email field",
       severity: "critical",
       owner: "Fairuz Hanif Rabbani",
-      tags: ["negative", "regression"],
+      tags: ["negative", "smoke"],
       id: "REG-NEG-USR-002",
       description: "This test case verifies that an user cannot register with empty email field.",
     });
@@ -146,7 +146,7 @@ test.describe("Authentication - User - Registration", () => {
       await SchemaAssert(
         registerResponseBody,
         RegisterSchemaFailed,
-        "Registration Failed Response",
+        "JSON Schema Registration Failed",
       );
     });
 
@@ -176,7 +176,7 @@ test.describe("Authentication - User - Registration", () => {
       story: "Verify failed registration with empty password field",
       severity: "critical",
       owner: "Fairuz Hanif Rabbani",
-      tags: ["negative", "regression"],
+      tags: ["negative", "smoke"],
       id: "REG-NEG-USR-003",
       description:
         "This test case verifies that an user cannot register with empty password field.",
@@ -223,7 +223,7 @@ test.describe("Authentication - User - Registration", () => {
       await SchemaAssert(
         registerResponseBody,
         RegisterSchemaFailed,
-        "Registration Failed Response",
+        "JSON Schema Registration Failed",
       );
     });
 
@@ -253,7 +253,7 @@ test.describe("Authentication - User - Registration", () => {
       story: "Verify failed registration with wrong email format",
       severity: "critical",
       owner: "Fairuz Hanif Rabbani",
-      tags: ["negative", "regression","bugs"],
+      tags: ["negative", "smoke","bugs"],
       id: "REG-NEG-USR-004",
       description:
         "This test case verifies that an user cannot register with a wrong email format.",
@@ -302,7 +302,7 @@ test.describe("Authentication - User - Registration", () => {
       await SchemaAssert(
         registerResponseBody,
         RegisterSchemaFailed,
-        "Registration Failed Response",
+        "JSON Schema Registration Failed",
       );
     });
 
@@ -332,7 +332,7 @@ test.describe("Authentication - User - Registration", () => {
       story: "Verify failed registration with already registered email",
       severity: "critical",
       owner: "Fairuz Hanif Rabbani",
-      tags: ["negative", "regression"],
+      tags: ["negative", "smoke"],
       id: "REG-NEG-USR-005",
       description: "This test case verifies that an user cannot register with an email that is already registered.",
     });
@@ -378,7 +378,7 @@ test.describe("Authentication - User - Registration", () => {
       await SchemaAssert(
         registerResponseBody,
         RegisterSchemaFailed,
-        "Registration Failed Response",
+        "JSON Schema Registration Failed",
       );
     });
 

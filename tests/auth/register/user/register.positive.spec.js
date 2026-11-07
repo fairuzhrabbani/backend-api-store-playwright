@@ -67,7 +67,7 @@ test.describe("Authentication - User - Registration", () => {
       await SchemaAssert(
         registerResponseBody,
         RegisterSchemaSuccess,
-        "Registration Success Response",
+        "JSON Schema Registration Success",
       );
     });
 
