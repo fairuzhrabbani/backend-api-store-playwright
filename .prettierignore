@@ -1,0 +1,7 @@
+node_modules/
+allure-results/
+allure-report/
+allure-history/
+playwright-report/
+test-results/
+coverage/

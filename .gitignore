@@ -1,0 +1,37 @@
+# Dependencies
+node_modules/
+
+# Reports
+allure-report/
+allure-results/
+playwright-report/
+test-results/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+config/environments/.sit.env
+config/environments/.uat.env
+
+# Logs
+*.log
+logs/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/
+
+# Test coverage
+coverage/
+
+# Build
+dist/
+build/
+
+# Uploaded product images
+uploads/products/*
+!uploads/products/.gitkeep
