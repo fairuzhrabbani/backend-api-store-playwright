@@ -8,6 +8,13 @@ class TestDataFactory {
       password: "Password123",
     };
   }
+
+  static createRandomCreateCategory() {
+    return {
+      name: faker.commerce.productName(),
+      description: faker.commerce.productDescription(),
+    };
+  }
 }
 
 export default TestDataFactory;

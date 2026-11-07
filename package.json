@@ -12,6 +12,7 @@
     "test:auth:register:user:sit": "cross-env TEST_ENV=sit playwright test tests/auth/register/user",
     "test:category:getall:admin:sit": "cross-env TEST_ENV=sit playwright test tests/category/admin/getall-category",
     "test:category:getone:admin:sit": "cross-env TEST_ENV=sit playwright test tests/category/admin/getone-category",
+    "test:category:create:admin:sit": "cross-env TEST_ENV=sit playwright test tests/category/admin/create-category",
     "test:admin": "playwright test tests/products/admin",
     "test:user": "playwright test tests/products/user",
     "test:authz": "playwright test tests/authorization",
