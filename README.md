@@ -218,7 +218,15 @@ Before running the automation tests, make sure the following tools are installed
 
 ## Installation
 
-Clone the repository:
+**First, you need to clone the backend repository here.**
+Clone the repository for Backend Side:
+
+[Backend Repository](https://github.com/fairuzhrabbani/backend-api-kopling-to-cvt.git)
+or
+```bash
+git clone https://github.com/fairuzhrabbani/backend-api-kopling-to-cvt.git
+```
+Clone the repository API Testing:
 
 ```bash
 git clone https://github.com/fairuzhrabbani/backend-api-store-playwright.git
