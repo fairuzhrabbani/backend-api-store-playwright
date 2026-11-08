@@ -23,6 +23,13 @@ export class DatabaseAssertions {
     });
   }
 
+  static async expectNumber(record, field, expectedValue) {
+    expect(
+      Number(record[field]),
+      `Database record field '${field}' should have the expected value '${expectedValue}'`,
+    ).toBe(expectedValue);
+  }
+
   static async assertRecordCount(records, expectedCount) {
     await allure.step("Verify database records count", async () => {
       expect(records, "Database records count should match the expected count").toHaveLength(

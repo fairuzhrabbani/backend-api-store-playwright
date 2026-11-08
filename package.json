@@ -15,6 +15,7 @@
     "test:category:create:admin:sit": "cross-env TEST_ENV=sit playwright test tests/category/admin/create-category",
     "test:category:update:admin:sit": "cross-env TEST_ENV=sit playwright test tests/category/admin/update-category",
     "test:category:delete:admin:sit": "cross-env TEST_ENV=sit playwright test tests/category/admin/delete-category",
+    "test:product:create:admin:sit": "cross-env TEST_ENV=sit playwright test tests/products/admin/create-product",
     "test:admin": "playwright test tests/products/admin",
     "test:user": "playwright test tests/products/user",
     "test:authz": "playwright test tests/authorization",

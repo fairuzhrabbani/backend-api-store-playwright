@@ -13,7 +13,18 @@ export const test = base.extend({
   },
 
   productAPI: async ({ request }, use, testInfo) => {
-    const productAPI = new ProductAPI(request, testInfo);
+    const authAPI = new AuthAPI(request, testInfo);
+
+    const loginResponse = await authAPI.login({
+      email: process.env.ADMIN_EMAIL,
+      password: process.env.ADMIN_PASSWORD,
+    });
+
+    const loginBody = await loginResponse.json();
+    const token = loginBody.data.accessToken;
+
+    const productAPI = new ProductAPI(request, token);
+
     await use(productAPI);
   },
 
