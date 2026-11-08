@@ -8,13 +8,13 @@ import { DatabaseAssertions } from "../../../../src/utils/database/database.asse
 import { AllureHelper } from "../../../../src/utils/allure/allure.helper.js";
 import TestDataFactory from "../../../../src/data/factory/test-data.factory.js";
 
-test.describe("Categories - Admin - Update Categories", () => {
+test.describe("Categories - Admin - Update", () => {
   let categoryResponse;
   let categoryResponseBody;
   let categoryId;
   let _categoryName;
   let _categoryDescription;
-  const testCaseName = "Categories - Admin - Update Categories";
+  const testCaseName = "Categories - Admin - Update";
 
   test.beforeEach(async ({ categoryAPI }) => {
     // Get all categories
@@ -52,13 +52,13 @@ test.describe("Categories - Admin - Update Categories", () => {
     await AllureHelper.metadata({
       epic: "Categories",
       feature: "Update Categories",
-      story: "Verify successful retrieval of one category by Admin",
+      story: "Verify Return 400 and display message 'Name and description are required'",
       severity: "critical",
       owner: "Fairuz Hanif Rabbani",
-      tags: ["positive", "regression"],
+      tags: ["negative", "smoke"],
       id: "CAT-UPD-NEG-ADM-001",
       description:
-        "This test case verifies that an admin can successfully retrieve one category by Admin.",
+        "This test case verifies that an admin can't update category if without input name field.",
     });
 
     // Test data
@@ -72,6 +72,7 @@ test.describe("Categories - Admin - Update Categories", () => {
     await AllureHelper.parameter("Description", payload.description);
 
     await test.step(`Validate Response HTTP Status Code - ${testCaseName}`, async () => {
+      await AllureHelper.attachRequest(payload);
       // Send the login request and validate the HTTP status code
       categoryResponse = await categoryAPI.update(categoryId, payload);
       await AllureHelper.attachResponseHTTPStatusCode(categoryResponse.status());
@@ -93,7 +94,7 @@ test.describe("Categories - Admin - Update Categories", () => {
 
     await test.step(`Validate JSON Schemas - ${testCaseName}`, async () => {
       categoryResponseBody = await categoryResponse.json();
-      await SchemaAssert(categoryResponseBody, CategorySchemaFailed, "Update Categories Response");
+      await SchemaAssert(categoryResponseBody, CategorySchemaFailed, "JSON Schema Failed Update Categories");
     });
 
     await test.step(`Validate Database - ${testCaseName}`, async () => {
@@ -119,13 +120,13 @@ test.describe("Categories - Admin - Update Categories", () => {
     await AllureHelper.metadata({
       epic: "Categories",
       feature: "Update Categories",
-      story: "Verify successful retrieval of one category by Admin",
+      story: "Verify Return 400 and display message 'Name and description are required'",
       severity: "critical",
       owner: "Fairuz Hanif Rabbani",
-      tags: ["positive", "regression"],
+      tags: ["negative", "smoke"],
       id: "CAT-UPD-NEG-ADM-002",
       description:
-        "This test case verifies that an admin can successfully retrieve one category by Admin.",
+        "This test case verifies that an admin can't update category if without description name field.",
     });
 
     // Test data
@@ -139,6 +140,7 @@ test.describe("Categories - Admin - Update Categories", () => {
     await AllureHelper.parameter("Description", payload.description);
 
     await test.step(`Validate Response HTTP Status Code - ${testCaseName}`, async () => {
+      await AllureHelper.attachRequest(payload);
       // Send the login request and validate the HTTP status code
       categoryResponse = await categoryAPI.update(categoryId, payload);
       await AllureHelper.attachResponseHTTPStatusCode(categoryResponse.status());
@@ -160,7 +162,7 @@ test.describe("Categories - Admin - Update Categories", () => {
 
     await test.step(`Validate JSON Schemas - ${testCaseName}`, async () => {
       categoryResponseBody = await categoryResponse.json();
-      await SchemaAssert(categoryResponseBody, CategorySchemaFailed, "Update Categories Response");
+      await SchemaAssert(categoryResponseBody, CategorySchemaFailed, "JSON Schema Failed Update Categories");
     });
 
     await test.step(`Validate Database - ${testCaseName}`, async () => {
@@ -180,19 +182,19 @@ test.describe("Categories - Admin - Update Categories", () => {
     });
   });
 
-  test("CAT-UPD-NEG-ADM-003 - Verify Return 400 and display message 'Category ID must be a positive integer' when update category with invalid format Category Id", async ({
+  test("CAT-UPD-NEG-ADM-003 - Verify Return 400 and display message 'Category ID must be a negative integer' when update category with invalid format Category Id", async ({
     categoryAPI,
   }) => {
     await AllureHelper.metadata({
       epic: "Categories",
       feature: "Update Categories",
-      story: "Verify successful retrieval of one category by Admin",
+      story: "Verify Return 400 and display message 'Category ID must be a negative integer'",
       severity: "critical",
       owner: "Fairuz Hanif Rabbani",
-      tags: ["positive", "regression"],
+      tags: ["negative", "smoke"],
       id: "CAT-UPD-NEG-ADM-003",
       description:
-        "This test case verifies that an admin can successfully retrieve one category by Admin.",
+        "This test case verifies that an admin can't update category if invalid format category Id",
     });
 
     // Test data
@@ -204,6 +206,7 @@ test.describe("Categories - Admin - Update Categories", () => {
     await AllureHelper.parameter("Description", categoryData.description);
 
     await test.step(`Validate Response HTTP Status Code - ${testCaseName}`, async () => {
+      await AllureHelper.attachRequest(categoryData);
       // Send the login request and validate the HTTP status code
       categoryResponse = await categoryAPI.update(invalidCategoryId, categoryData);
       await AllureHelper.attachResponseHTTPStatusCode(categoryResponse.status());
@@ -225,7 +228,7 @@ test.describe("Categories - Admin - Update Categories", () => {
 
     await test.step(`Validate JSON Schemas - ${testCaseName}`, async () => {
       categoryResponseBody = await categoryResponse.json();
-      await SchemaAssert(categoryResponseBody, CategorySchemaFailed, "Update Categories Response");
+      await SchemaAssert(categoryResponseBody, CategorySchemaFailed, "JSON Schema Update Categories");
     });
 
     await test.step(`Validate Database - ${testCaseName}`, async () => {
@@ -251,13 +254,13 @@ test.describe("Categories - Admin - Update Categories", () => {
     await AllureHelper.metadata({
       epic: "Categories",
       feature: "Update Categories",
-      story: "Verify successful retrieval of one category by Admin",
+      story: "Verify Return 404 and display message 'Category not found'",
       severity: "critical",
       owner: "Fairuz Hanif Rabbani",
-      tags: ["positive", "regression"],
+      tags: ["negative", "smoke"],
       id: "CAT-UPD-NEG-ADM-003",
       description:
-        "This test case verifies that an admin can successfully retrieve one category by Admin.",
+        "This test case verifies that an admin can't update category if invalid category id or not found category id.",
     });
 
     // Test data
@@ -269,6 +272,7 @@ test.describe("Categories - Admin - Update Categories", () => {
     await AllureHelper.parameter("Description", categoryData.description);
 
     await test.step(`Validate Response HTTP Status Code - ${testCaseName}`, async () => {
+      await AllureHelper.attachRequest(categoryData);
       // Send the login request and validate the HTTP status code
       categoryResponse = await categoryAPI.update(invalidCategoryId, categoryData);
       await AllureHelper.attachResponseHTTPStatusCode(categoryResponse.status());
@@ -290,7 +294,7 @@ test.describe("Categories - Admin - Update Categories", () => {
 
     await test.step(`Validate JSON Schemas - ${testCaseName}`, async () => {
       categoryResponseBody = await categoryResponse.json();
-      await SchemaAssert(categoryResponseBody, CategorySchemaFailed, "Update Categories Response");
+      await SchemaAssert(categoryResponseBody, CategorySchemaFailed, "JSON Schema Update Categories");
     });
 
     await test.step(`Validate Database - ${testCaseName}`, async () => {

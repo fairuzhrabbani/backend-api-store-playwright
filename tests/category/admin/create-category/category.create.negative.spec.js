@@ -8,10 +8,10 @@ import { DatabaseAssertions } from "../../../../src/utils/database/database.asse
 import { AllureHelper } from "../../../../src/utils/allure/allure.helper.js";
 import TestDataFactory from "../../../../src/data/factory/test-data.factory.js";
 
-test.describe("Categories - Admin - Create Categories", () => {
+test.describe("Categories - Admin - Create", () => {
   let categoryResponse;
   let categoryResponseBody;
-  const testCaseName = "Categories - Admin - Create Categories";
+  const testCaseName = "Categories - Admin - Create";
 
   test("CAT-CRT-NEG-ADM-001 - Verify Return 400 and display message 'Name and description are required' when name field is empty", async ({
     categoryAPI,
@@ -64,7 +64,7 @@ test.describe("Categories - Admin - Create Categories", () => {
 
     await test.step(`Validate JSON Schemas - ${testCaseName}`, async () => {
       categoryResponseBody = await categoryResponse.json();
-      await SchemaAssert(categoryResponseBody, CategorySchemaFailed, "Get Categories Response");
+      await SchemaAssert(categoryResponseBody, CategorySchemaFailed, "JSON Schema Failed Create Categories");
     });
 
     await test.step(`Validate Database - ${testCaseName}`, async () => {
@@ -135,7 +135,11 @@ test.describe("Categories - Admin - Create Categories", () => {
 
     await test.step(`Validate JSON Schemas - ${testCaseName}`, async () => {
       categoryResponseBody = await categoryResponse.json();
-      await SchemaAssert(categoryResponseBody, CategorySchemaFailed, "Get Categories Response");
+      await SchemaAssert(
+        categoryResponseBody,
+        CategorySchemaFailed,
+        "JSON Schema Failed Create Categories",
+      );
     });
 
     await test.step(`Validate Database - ${testCaseName}`, async () => {

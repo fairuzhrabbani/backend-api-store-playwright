@@ -8,10 +8,10 @@ import { DatabaseAssertions } from "../../../../src/utils/database/database.asse
 import { AllureHelper } from "../../../../src/utils/allure/allure.helper.js";
 import TestDataFactory from "../../../../src/data/factory/test-data.factory.js";
 
-test.describe("Categories - Admin - Create Categories", () => {
+test.describe("Categories - Admin - Create", () => {
   let categoryResponse;
   let categoryResponseBody;
-  const testCaseName = "Categories - Admin - Create Categories";
+  const testCaseName = "Categories - Admin - Create";
 
   test("CAT-CRT-POS-ADM-001 - Verify Return 201 when Admin hit Create Categories", async ({
     categoryAPI,
@@ -23,7 +23,7 @@ test.describe("Categories - Admin - Create Categories", () => {
       severity: "critical",
       owner: "Fairuz Hanif Rabbani",
       tags: ["positive", "regression"],
-      id: "CAT-POS-ADM-001",
+      id: "CAT-CRT-POS-ADM-001",
       description: "This test case verifies that an admin can successfully create categories.",
     });
 
@@ -62,7 +62,7 @@ test.describe("Categories - Admin - Create Categories", () => {
       await SchemaAssert(
         categoryResponseBody,
         CategorySchemaCreateSuccess,
-        "Get Categories Response",
+        "JSON Schema Success Create Categories",
       );
     });
 

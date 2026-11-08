@@ -7,13 +7,13 @@ import { DatabaseHelper } from "../../../../src/utils/database/database.helper.j
 import { DatabaseAssertions } from "../../../../src/utils/database/database.assertion.js";
 import { AllureHelper } from "../../../../src/utils/allure/allure.helper.js";
 
-test.describe("Categories - Admin - Get One Categories", () => {
+test.describe("Categories - Admin - Get One", () => {
   let categoryResponse;
   let categoryResponseBody;
   let categoryId = 999;
   let invalidFormatCategoryId = "abc";
 
-  const testCaseName = "Categories - Admin - Get One Categories";
+  const testCaseName = "Categories - Admin - Get One";
 
   test("CAT-ONE-NEG-ADM-001 - Verify Return 404 and display message 'Category not found' when categoryId not found'", async ({
     categoryAPI,
@@ -28,7 +28,13 @@ test.describe("Categories - Admin - Get One Categories", () => {
       id: "CAT-ONE-POS-ADM-001",
       description: "This test case verifies Return 404 and display message 'Category not found'",
     });
+
+    await AllureHelper.parameter("categoryId", categoryId);
+
     await test.step(`Validate Response HTTP Status Code - ${testCaseName}`, async () => {
+      await AllureHelper.attachRequest({
+        categoryId: categoryId,
+      });
       // Send the login request and validate the HTTP status code
       categoryResponse = await categoryAPI.getById(categoryId);
       await AllureHelper.attachResponseHTTPStatusCode(categoryResponse.status());
@@ -50,7 +56,11 @@ test.describe("Categories - Admin - Get One Categories", () => {
 
     await test.step(`Validate JSON Schemas - ${testCaseName}`, async () => {
       categoryResponseBody = await categoryResponse.json();
-      await SchemaAssert(categoryResponseBody, CategorySchemaFailed, "Get Categories Response");
+      await SchemaAssert(
+        categoryResponseBody,
+        CategorySchemaFailed,
+        "JSON Schema Failed Get One Categories",
+      );
     });
 
     await test.step(`Validate Database - ${testCaseName}`, async () => {
@@ -83,7 +93,13 @@ test.describe("Categories - Admin - Get One Categories", () => {
       description:
         "This test case verifies 400 and display message 'Category ID must be a positive integer'",
     });
+
+    await AllureHelper.parameter("categoryId", invalidFormatCategoryId);
+
     await test.step(`Validate Response HTTP Status Code - ${testCaseName}`, async () => {
+      await AllureHelper.attachRequest({
+        categoryId: invalidFormatCategoryId,
+      });
       // Send the login request and validate the HTTP status code
       categoryResponse = await categoryAPI.getById(invalidFormatCategoryId);
       await AllureHelper.attachResponseHTTPStatusCode(categoryResponse.status());
@@ -105,7 +121,11 @@ test.describe("Categories - Admin - Get One Categories", () => {
 
     await test.step(`Validate JSON Schemas - ${testCaseName}`, async () => {
       categoryResponseBody = await categoryResponse.json();
-      await SchemaAssert(categoryResponseBody, CategorySchemaFailed, "Get Categories Response");
+      await SchemaAssert(
+        categoryResponseBody,
+        CategorySchemaFailed,
+        "JSON Schema Failed Get One Categories",
+      );
     });
 
     await test.step(`Validate Database - ${testCaseName}`, async () => {

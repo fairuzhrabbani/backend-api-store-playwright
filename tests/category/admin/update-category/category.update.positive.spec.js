@@ -8,13 +8,13 @@ import { DatabaseAssertions } from "../../../../src/utils/database/database.asse
 import { AllureHelper } from "../../../../src/utils/allure/allure.helper.js";
 import TestDataFactory from "../../../../src/data/factory/test-data.factory.js";
 
-test.describe("Categories - Admin - Update Categories", () => {
+test.describe("Categories - Admin - Update", () => {
   let categoryResponse;
   let categoryResponseBody;
   let categoryId;
   let _categoryName;
   let _categoryDescription;
-  const testCaseName = "Categories - Admin - Update Categories";
+  const testCaseName = "Categories - Admin - Update";
 
   test.beforeEach(async ({ categoryAPI }) => {
     // Get all categories
@@ -52,13 +52,13 @@ test.describe("Categories - Admin - Update Categories", () => {
     await AllureHelper.metadata({
       epic: "Categories",
       feature: "Update Categories",
-      story: "Verify successful retrieval of one category by Admin",
+      story: "Verify Return 200 and display message 'Category updated successfully'",
       severity: "critical",
       owner: "Fairuz Hanif Rabbani",
       tags: ["positive", "regression"],
       id: "CAT-UPD-POS-ADM-001",
       description:
-        "This test case verifies that an admin can successfully retrieve one category by Admin.",
+        "This test case verifies that an admin can successfully update category by Admin.",
     });
 
     // Test data
@@ -68,6 +68,7 @@ test.describe("Categories - Admin - Update Categories", () => {
     await AllureHelper.parameter("Description", categoryData.description);
 
     await test.step(`Validate Response HTTP Status Code - ${testCaseName}`, async () => {
+      await AllureHelper.attachRequest(categoryData);
       // Send the login request and validate the HTTP status code
       categoryResponse = await categoryAPI.update(categoryId, categoryData);
       await AllureHelper.attachResponseHTTPStatusCode(categoryResponse.status());
@@ -97,7 +98,7 @@ test.describe("Categories - Admin - Update Categories", () => {
       await SchemaAssert(
         categoryResponseBody,
         CategorySchemaUpdateSuccess,
-        "Get Categories Response",
+        "JSON Schema Success Update Categories",
       );
     });
 

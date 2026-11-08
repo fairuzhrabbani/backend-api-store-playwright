@@ -6,13 +6,13 @@ import { DatabaseHelper } from "../../../../src/utils/database/database.helper.j
 import { DatabaseAssertions } from "../../../../src/utils/database/database.assertion.js";
 import { AllureHelper } from "../../../../src/utils/allure/allure.helper.js";
 
-test.describe("Categories - Admin - Get One Categories", () => {
+test.describe("Categories - Admin - Get One", () => {
   let categoryResponse;
   let categoryResponseBody;
   let categoryId;
   let categoryName;
   let categoryDescription;
-  const testCaseName = "Categories - Admin - Get One Categories";
+  const testCaseName = "Categories - Admin - Get One";
 
   test.beforeEach(async ({ categoryAPI }) => {
     // Get all categories
@@ -47,7 +47,13 @@ test.describe("Categories - Admin - Get One Categories", () => {
       description:
         "This test case verifies that an admin can successfully retrieve one category by Admin.",
     });
+
+    await AllureHelper.parameter("categoryId", categoryId);
+
     await test.step(`Validate Response HTTP Status Code - ${testCaseName}`, async () => {
+      await AllureHelper.attachRequest({
+        categoryId: categoryId,
+      });
       // Send the login request and validate the HTTP status code
       categoryResponse = await categoryAPI.getById(categoryId);
       await AllureHelper.attachResponseHTTPStatusCode(categoryResponse.status());
@@ -71,7 +77,7 @@ test.describe("Categories - Admin - Get One Categories", () => {
       await SchemaAssert(
         categoryResponseBody,
         CategorySchemaGetOneSuccess,
-        "Get Categories Response",
+        "JSON Schema Success Get One Categories",
       );
     });
 

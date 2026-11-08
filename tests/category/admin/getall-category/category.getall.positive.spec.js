@@ -6,10 +6,10 @@ import { DatabaseHelper } from "../../../../src/utils/database/database.helper.j
 import { DatabaseAssertions } from "../../../../src/utils/database/database.assertion.js";
 import { AllureHelper } from "../../../../src/utils/allure/allure.helper.js";
 
-test.describe("Categories - Admin - Get All Categories", () => {
+test.describe("Categories - Admin - Get All", () => {
   let categoryResponse;
   let categoryResponseBody;
-  const testCaseName = "Categories - Admin - Get All Categories";
+  const testCaseName = "Categories - Admin - Get All";
 
   test("CAT-ALL-POS-ADM-001 - Verify Return 200 when Admin hit Get All Categories", async ({
     categoryAPI,
@@ -45,7 +45,7 @@ test.describe("Categories - Admin - Get All Categories", () => {
       await SchemaAssert(
         categoryResponseBody,
         CategorySchemaGetAllSuccess,
-        "Get Categories Response",
+        "JSON Schema Success Get All Categories",
       );
     });
 
