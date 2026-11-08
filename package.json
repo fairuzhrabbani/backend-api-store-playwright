@@ -20,6 +20,7 @@
     "test:product:create:admin:sit": "cross-env TEST_ENV=sit playwright test tests/products/admin/create-product",
     "test:product:update:admin:sit": "cross-env TEST_ENV=sit playwright test tests/products/admin/update-product",
     "test:product:delete:admin:sit": "cross-env TEST_ENV=sit playwright test tests/products/admin/delete-product",
+    "test:e2e:admin:sit": "cross-env TEST_ENV=sit playwright test tests/e2e/admin",
     "report:generate": "allure generate allure-results --clean -o allure-report",
     "report:open": "allure open allure-report",
     "test:report": "allure-report.bat",
