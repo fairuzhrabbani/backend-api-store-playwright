@@ -14,13 +14,20 @@ export class DatabaseAssertions {
     });
   }
 
+  // static async assertFieldValue(record, field, expectedValue) {
+  //   await allure.step("Verify database record field value", async () => {
+  //     expect(
+  //       record[field],
+  //       `Database record field '${field}' should have the expected value '${expectedValue}'`,
+  //     ).toBe(expectedValue);
+  //   });
+  // }
+
   static async assertFieldValue(record, field, expectedValue) {
-    await allure.step("Verify database record field value", async () => {
-      expect(
-        record[field],
-        `Database record field '${field}' should have the expected value '${expectedValue}'`,
-      ).toBe(expectedValue);
-    });
+    expect(
+      record[field],
+      `Database record field '${field}' should have the expected value '${expectedValue}'`,
+    ).toBe(expectedValue);
   }
 
   static async expectNumber(record, field, expectedValue) {
