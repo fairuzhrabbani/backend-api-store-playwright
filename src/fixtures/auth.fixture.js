@@ -6,7 +6,7 @@ import { CategoryAPI } from "../api/clients/category.api.js";
 import { UsersAPI } from "../api/clients/users.api.js";
 import { CartAPI } from "../api/clients/cart.api.js";
 
-async function createAuthenticatedAPIs(request, email, password) {
+async function createAuthenticatedAPIs(request, email, password, testInfo) {
   const authAPI = new AuthAPI(request);
 
   const loginResponse = await authAPI.login({
@@ -30,6 +30,7 @@ async function createAuthenticatedAPIs(request, email, password) {
 
   return {
     token,
+    testInfo,
     productAPI: new ProductAPI(authenticatedRequest),
     categoryAPI: new CategoryAPI(authenticatedRequest),
     usersAPI: new UsersAPI(authenticatedRequest),
@@ -39,11 +40,12 @@ async function createAuthenticatedAPIs(request, email, password) {
 }
 
 export const test = base.extend({
-  admin: async ({ request }, use) => {
+  admin: async ({ request }, use, testInfo) => {
     const apis = await createAuthenticatedAPIs(
       request,
       process.env.ADMIN_EMAIL,
       process.env.ADMIN_PASSWORD,
+      testInfo,
     );
 
     try {
@@ -53,11 +55,12 @@ export const test = base.extend({
     }
   },
 
-  user: async ({ request }, use) => {
+  user: async ({ request }, use, testInfo) => {
     const apis = await createAuthenticatedAPIs(
       request,
       process.env.USER_EMAIL,
       process.env.USER_PASSWORD,
+      testInfo,
     );
 
     try {

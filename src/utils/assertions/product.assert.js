@@ -5,8 +5,7 @@ export class ProductAssertions {
   static async assertCreateProductSuccess(responseBody, expectedMessage, expectedProduct) {
     // Business Response Validation
     await allure.step("Verify Product Success Response", async () => {
-      expect(responseBody.success,
-        "Product response should indicate success is true").toBe(true);
+      expect(responseBody.success, "Product response should indicate success is true").toBe(true);
 
       expect(
         responseBody.message,
@@ -108,6 +107,12 @@ export class ProductAssertions {
         id: expectedUser.id,
         name: expectedUser.name,
         description: expectedUser.description,
+        price: expectedUser.price,
+        stock: expectedUser.stock,
+        category_id: expectedUser.category_id,
+        category_name: expectedUser.category_name,
+        created_at: expectedUser.created_at,
+        updated_at: expectedUser.updated_at,
       });
     });
   }
