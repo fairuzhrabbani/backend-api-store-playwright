@@ -32,8 +32,8 @@ export class APILogger {
 
   static logExchange({ testCase, request, response, error }) {
     const logData = {
-      apiRequest: this.maskSensitiveData(request),
-      apiResponse: response ? this.maskSensitiveData(response) : undefined,
+      RequestBody: this.maskSensitiveData(request),
+      ResponseBody: response ? this.maskSensitiveData(response) : undefined,
       error: error
         ? {
             message: error.message,
@@ -41,7 +41,7 @@ export class APILogger {
         : undefined,
     };
 
-    logger.info(logData, `API EXCHANGE: ${testCase}`);
+    logger.info(logData, `[LOGGER]: ${testCase}`);
   }
 
   static logTestResult({ testCase, status, duration }) {

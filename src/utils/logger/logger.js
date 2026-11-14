@@ -9,6 +9,10 @@ fs.mkdirSync(logDirectory, { recursive: true });
 const logger = pino({
   level: "info",
   timestamp: pino.stdTimeFunctions.isoTime,
+  base: {
+    service: "backend-api-store-automation",
+    environment: process.env.TEST_ENV || "sit",
+  },
   transport: {
     targets: [
       {
