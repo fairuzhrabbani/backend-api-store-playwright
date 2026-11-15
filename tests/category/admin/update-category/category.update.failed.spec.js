@@ -6,7 +6,7 @@ import { CategorySchemaFailed } from "../../../../src/assertions/category/catego
 import { DatabaseHelper } from "../../../../src/utils/database/database.helper.js";
 import { DatabaseAssertions } from "../../../../src/utils/database/database.assertion.js";
 import { AllureHelper } from "../../../../src/utils/allure/allure.helper.js";
-import TestDataFactory from "../../../../src/data/factory/test-data.factory.js";
+import CategoryFactory from "../../../../src/data/factory/category.factory.js";
 
 test.describe("Categories - Admin - Update", () => {
   let categoryResponse;
@@ -62,7 +62,7 @@ test.describe("Categories - Admin - Update", () => {
     });
 
     // Test data
-    const categoryData = TestDataFactory.createRandomCreateCategory();
+    const categoryData = CategoryFactory.createRandomCreateCategory();
     const payload = {
       name: "",
       description: categoryData.description,
@@ -130,7 +130,7 @@ test.describe("Categories - Admin - Update", () => {
     });
 
     // Test data
-    const categoryData = TestDataFactory.createRandomCreateCategory();
+    const categoryData = CategoryFactory.createRandomCreateCategory();
     const payload = {
       name: categoryData.name,
       description: "",
@@ -198,7 +198,7 @@ test.describe("Categories - Admin - Update", () => {
     });
 
     // Test data
-    const categoryData = TestDataFactory.createRandomCreateCategory();
+    const categoryData = CategoryFactory.createRandomCreateCategory();
     const invalidCategoryId = "abc";
 
     await AllureHelper.parameter("Category Id", invalidCategoryId);
@@ -264,7 +264,7 @@ test.describe("Categories - Admin - Update", () => {
     });
 
     // Test data
-    const categoryData = TestDataFactory.createRandomCreateCategory();
+    const categoryData = CategoryFactory.createRandomCreateCategory();
     const invalidCategoryId = 9999;
 
     await AllureHelper.parameter("Category Id", invalidCategoryId);

@@ -1,7 +1,12 @@
 import { faker } from "@faker-js/faker";
 
 export default class ProductFactory {
-  static createPayload(categoryId) {
+  static createPayload(categories) {
+    if (!categories || categories.length === 0) {
+      throw new Error("Category data is required");
+    }
+
+    const selectedCategory = faker.helpers.arrayElement(categories);
     return {
       name: faker.commerce.productName(),
       description: faker.commerce.productDescription(),
@@ -13,11 +18,16 @@ export default class ProductFactory {
         min: 1,
         max: 100,
       }),
-      categoryId,
+      categoryId: selectedCategory.id,
     };
   }
 
-  static updatePayload(categoryId) {
+  static updatePayload(categories) {
+    if (!categories || categories.length === 0) {
+      throw new Error("Category data is required");
+    }
+
+    const selectedCategory = faker.helpers.arrayElement(categories);
     return {
       name: faker.commerce.productName(),
       description: faker.commerce.productDescription(),
@@ -29,7 +39,7 @@ export default class ProductFactory {
         min: 1,
         max: 100,
       }),
-      categoryId,
+      categoryId: selectedCategory.id,
     };
   }
 }
