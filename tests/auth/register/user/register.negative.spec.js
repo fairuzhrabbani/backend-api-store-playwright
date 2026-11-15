@@ -6,7 +6,8 @@ import { RegisterSchemaFailed } from "../../../../src/assertions/register/regist
 import { DatabaseHelper } from "../../../../src/utils/database/database.helper.js";
 import { DatabaseAssertions } from "../../../../src/utils/database/database.assertion.js";
 import { AllureHelper } from "../../../../src/utils/allure/allure.helper.js";
-import TestDataFactory from "../../../../src/data/factory/test-data.factory.js";
+import RegisterFactory from "../../../../src/data/factory/register.factory.js";
+
 
 const JIRA_BASE_URL = process.env.JIRA_BASE_URL;
 
@@ -30,7 +31,7 @@ test.describe("Authentication - User - Registration", () => {
     });
     // Prepare the payload for registration
     // Test data
-    const registerData = TestDataFactory.createRandomUserRegistration();
+    const registerData = RegisterFactory.createRandomUserRegistration();
 
     const payload = {
       name: "",
@@ -106,7 +107,7 @@ test.describe("Authentication - User - Registration", () => {
     });
     // Prepare the payload for registration
     // Test data
-    const registerData = TestDataFactory.createRandomUserRegistration();
+    const registerData = RegisterFactory.createRandomUserRegistration();
 
     const payload = {
       name: registerData.name,
@@ -183,7 +184,7 @@ test.describe("Authentication - User - Registration", () => {
     });
     // Prepare the payload for registration
     // Test data
-    const registerData = TestDataFactory.createRandomUserRegistration();
+    const registerData = RegisterFactory.createRandomUserRegistration();
 
     const payload = {
       name: registerData.name,
@@ -262,7 +263,7 @@ test.describe("Authentication - User - Registration", () => {
     await AllureHelper.jira("QA-123", JIRA_BASE_URL);
     // Prepare the payload for registration
     // Test data
-    const registerData = TestDataFactory.createRandomUserRegistration();
+    const registerData = RegisterFactory.createRandomUserRegistration();
 
     const payload = {
       name: registerData.name,
@@ -338,7 +339,7 @@ test.describe("Authentication - User - Registration", () => {
     });
     // Prepare the payload for registration
     // Test data
-    const registerData = TestDataFactory.createRandomUserRegistration();
+    const registerData = RegisterFactory.createRandomUserRegistration();
 
     const payload = {
       name: registerData.name,

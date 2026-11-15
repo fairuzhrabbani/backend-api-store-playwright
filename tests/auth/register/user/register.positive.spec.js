@@ -7,7 +7,7 @@ import { DatabaseHelper } from "../../../../src/utils/database/database.helper.j
 import { DatabaseAssertions } from "../../../../src/utils/database/database.assertion.js";
 import { AllureHelper } from "../../../../src/utils/allure/allure.helper.js";
 import { Roles } from "../../../../src/data/constants/roles.js";
-import TestDataFactory from "../../../../src/data/factory/test-data.factory.js";
+import RegisterFactory from "../../../../src/data/factory/register.factory.js";
 
 test.describe("Authentication - User - Registration", () => {
   let registerResponse;
@@ -29,7 +29,7 @@ test.describe("Authentication - User - Registration", () => {
     });
     // Prepare the payload for registration
     // Test data
-    const registerData = TestDataFactory.createRandomUserRegistration();
+    const registerData = RegisterFactory.createRandomUserRegistration();
 
     await AllureHelper.parameter("Name", registerData.name);
     await AllureHelper.parameter("Email", registerData.email);
