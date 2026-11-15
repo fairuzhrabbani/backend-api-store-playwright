@@ -3,7 +3,14 @@ export const MessagesCartAssertion = {
     success: {
       expectedMessage: "Product added to cart successfully",
       expectedHTTPStatus: 201,
-    }
+    },
+  },
+
+  clearProductCart: {
+    success: {
+      expectedMessage: "Cart cleared successfully",
+      expectedHTTPStatus: 200,
+    },
   },
   // updateCategory: {
   //   success: {

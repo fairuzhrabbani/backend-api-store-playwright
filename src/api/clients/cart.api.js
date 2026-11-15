@@ -59,7 +59,7 @@ export class CartAPI {
   async clearCart() {
     return this.api.execute({
       method: "DELETE",
-      endpoint: CartEndpoint.CLEAR(),
+      endpoint: CartEndpoint.CLEAR,
       options: {
         headers: this.headers,
       },

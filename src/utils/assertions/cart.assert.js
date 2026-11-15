@@ -32,4 +32,20 @@ export class CartAssertions {
       });
     });
   }
+
+  static async assertClearProductCartSuccess(responseBody, expectedMessage) {
+    // Business Response Validation
+    await allure.step("Verify Clear Product Cart success response", async () => {
+      expect(responseBody.success, "Cart response should indicate success").toBe(true);
+      expect(
+        responseBody.message,
+        `Cart response should return the expected success message: ${expectedMessage}`,
+      ).toBe(expectedMessage);
+    });
+
+    // Response Structure Validation
+    await allure.step("Verify Cart data structure", async () => {
+      expect(responseBody.data, "Cart data should contain id").toHaveProperty("cartId");
+    });
+  }
 }
