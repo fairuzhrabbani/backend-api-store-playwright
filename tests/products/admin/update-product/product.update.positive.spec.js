@@ -63,7 +63,7 @@ test.describe("Product - Admin - Update", () => {
         "This test case verifies that an admin can successfully update Product by Admin.",
     });
 
-    const productData = ProductFactory.updatePayload(_categoryId);
+    const productData = ProductFactory.updateRandomProduct(_categoryId);
     await AllureHelper.parameter("Product Id", productId);
     await AllureHelper.parameter("Name", productData.name);
     await AllureHelper.parameter("Description", productData.description);

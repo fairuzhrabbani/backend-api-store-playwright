@@ -6,7 +6,7 @@ import { ProductSchemaCreateSuccess } from "../../../../src/assertions/products/
 import { DatabaseHelper } from "../../../../src/utils/database/database.helper.js";
 import { DatabaseAssertions } from "../../../../src/utils/database/database.assertion.js";
 import { AllureHelper } from "../../../../src/utils/allure/allure.helper.js";
-import TestDataFactory from "../../../../src/data/factory/test-data.factory.js";
+import ProductFactory from "../../../../src/data/factory/product.factory.js";
 
 test.describe("Product - Admin - Create", () => {
   let productResponse;
@@ -31,7 +31,7 @@ test.describe("Product - Admin - Create", () => {
     // Get available categories
     const categories = await DatabaseHelper.query("SELECT id, name FROM categories");
     // Generate random product
-    const payload = TestDataFactory.createRandomProductCategory(categories.rows);
+    const payload = ProductFactory.createRandomProduct(categories.rows);
 
     await AllureHelper.parameter("Name", payload.name);
     await AllureHelper.parameter("Description", payload.description);
