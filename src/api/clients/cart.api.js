@@ -16,7 +16,7 @@ export class CartAPI {
 
   async checkCart() {
     return this.api.execute({
-      method: "POST",
+      method: "GET",
       endpoint: CartEndpoint.LIST,
       options: {
         headers: this.headers,
