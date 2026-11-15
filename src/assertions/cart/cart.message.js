@@ -4,6 +4,10 @@ export const MessagesCartAssertion = {
       expectedMessage: "Product added to cart successfully",
       expectedHTTPStatus: 201,
     },
+    notFound: {
+      expectedMessage: "Product not found",
+      expectedHTTPStatus: 404,
+    },
   },
 
   clearProductCart: {
@@ -11,52 +15,46 @@ export const MessagesCartAssertion = {
       expectedMessage: "Cart cleared successfully",
       expectedHTTPStatus: 200,
     },
+    notFound: {
+      expectedMessage: "Cart not found",
+      expectedHTTPStatus: 404,
+    },
   },
-  // updateCategory: {
-  //   success: {
-  //     expectedMessage: "Category updated successfully",
-  //     expectedHTTPStatus: 200,
-  //   },
 
-  //   emptyFields: {
-  //     expectedMessage: "Name and description are required",
-  //     expectedHTTPStatus: 400,
-  //   },
+  updateProductCart: {
+    success: {
+      expectedMessage: "Cart item updated successfully",
+      expectedHTTPStatus: 200,
+    },
+    notFoundProduct: {
+      expectedMessage: "Product not found",
+      expectedHTTPStatus: 404,
+    },
+    notFoundCartItem: {
+      expectedMessage: "Cart item not found",
+      expectedHTTPStatus: 404,
+    },
+    notFoundCart: {
+      expectedMessage: "Cart not found",
+      expectedHTTPStatus: 404,
+    },
+  },
 
-  //   invalidFormatType: {
-  //     expectedMessage: "Category ID must be a positive integer",
-  //     expectedHTTPStatus: 400,
-  //   },
+  deleteProductCart: {
+    success: {
+      expectedMessage: "Product removed from cart successfully",
+      expectedHTTPStatus: 200,
+    },
+    notFound: {
+      expectedMessage: "Cart not found",
+      expectedHTTPStatus: 404,
+    },
+  },
 
-  //   notFound: {
-  //     expectedMessage: "Category not found",
-  //     expectedHTTPStatus: 404,
-  //   },
-  // },
-  // deleteCategory: {
-  //   success: {
-  //     expectedMessage: "Category deleted successfully",
-  //     expectedHTTPStatus: 200,
-  //   },
-
-  //   invalidFormatType: {
-  //     expectedMessage: "Category ID must be a positive integer",
-  //     expectedHTTPStatus: 400,
-  //   },
-
-  //   notFound: {
-  //     expectedMessage: "Category not found",
-  //     expectedHTTPStatus: 404,
-  //   },
-  // },
-  // getOneCategory: {
-  //   invalidFormatType: {
-  //     expectedMessage: "Category ID must be a positive integer",
-  //     expectedHTTPStatus: 400,
-  //   },
-  //   notFound: {
-  //     expectedMessage: "Category not found",
-  //     expectedHTTPStatus: 404,
-  //   },
-  // },
+  checkProductCart: {
+    success: {
+      expectedMessage: "Cart fetched successfully",
+      expectedHTTPStatus: 200,
+    }
+  },
 };
